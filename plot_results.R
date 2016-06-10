@@ -70,30 +70,32 @@ for(m in seq(1:M)){
 }
 
 
-for(g in seq(1:G)){
-  plot(rhead[g,,s],ylim=c(min(h_min),max(h_max)))
-  for(m in 1:M){lines(rQgw[g,m,]/(area[g]*ss[g]*thick[g]),col="orange")}
-  lines(rLat[g,,s]/(area[g]*ss[g]*thick[g]),col="blue")
-  abline(h_min[g],0,col="magenta")
-  abline(h_max[g],0,col="magenta")
-  title(paste("Aquifer",g, "piezohead"))
-  legend("bottomright",legend=c("water table","lateral flows","withdrawals","recharge"),col=c("black","blue","orange","magenta"),lty=c(1,1,1))
-}
-
-
-for(g in seq(1:G)){
-  plot(rhead[g,,s],ylim=c(-max(rQgw[g,m,]/(area[g]*ss[g]*thick[g])),max(rQgw[g,m,]/(area[g]*ss[g]*thick[g]))))
-  for(m in 1:M){lines(rQgw[g,m,]/(area[g]*ss[g]*thick[g]),col="orange")}
-  lines(rLat[g,,s]/(area[g]*ss[g]*thick[g]),col="blue")
-  lines(Igts[g,,s]/(area[g]*ss[g]*thick[g]),col="magenta")
-  title(paste("delta",g, "piezohead"))
-  legend("bottomright",legend=c("water table","lateral flows","withdrawals","recharge"),col=c("black","blue","orange","magenta"),lty=c(1,1,1))
-}
-
-
-
-par(mfrow=c(1,1))
-plot(rhead[1,,1],type="l",ylim=c(min(rhead),max(rhead)))
-for(g in 2:G){
-lines(rhead[g,,1],type="l")
+if(GW){
+  for(g in seq(1:G)){
+    plot(rhead[g,,s],ylim=c(min(h_min),max(h_max)))
+    for(m in 1:M){lines(rQgw[g,m,]/(area[g]*ss[g]*thick[g]),col="orange")}
+    lines(rLat[g,,s]/(area[g]*ss[g]*thick[g]),col="blue")
+    abline(h_min[g],0,col="magenta")
+    abline(h_max[g],0,col="magenta")
+    title(paste("Aquifer",g, "piezohead"))
+    legend("bottomright",legend=c("water table","lateral flows","withdrawals","recharge"),col=c("black","blue","orange","magenta"),lty=c(1,1,1))
+  }
+  
+  
+  for(g in seq(1:G)){
+    plot(rhead[g,,s],ylim=c(-max(rQgw[g,m,]/(area[g]*ss[g]*thick[g])),max(rQgw[g,m,]/(area[g]*ss[g]*thick[g]))))
+    for(m in 1:M){lines(rQgw[g,m,]/(area[g]*ss[g]*thick[g]),col="orange")}
+    lines(rLat[g,,s]/(area[g]*ss[g]*thick[g]),col="blue")
+    lines(Igts[g,,s]/(area[g]*ss[g]*thick[g]),col="magenta")
+    title(paste("delta",g, "piezohead"))
+    legend("bottomright",legend=c("water table","lateral flows","withdrawals","recharge"),col=c("black","blue","orange","magenta"),lty=c(1,1,1))
+  }
+  
+  
+  
+  par(mfrow=c(1,1))
+  plot(rhead[1,,1],type="l",ylim=c(min(rhead),max(rhead)))
+  for(g in 2:G){
+    lines(rhead[g,,1],type="l")
+  }
 }

@@ -7,24 +7,19 @@ source("input_fivecounties.R")
 
 #################################################################################################################
 ### GENERATE MATRICES FOR OPTIMISATION
-source("generate_matrix_gw.R")
+GW = TRUE # specify wether yes or not there is groundwater
+if(GW){
+  source("generate_matrix_gw.R")
+}else{
+  source("generate_matrix.R")
+}
+#################################################################################################################
+### OPTIMIZATION : solver = "lpsolve" or "gurobi"
+#solver = "gurobi"
+solver = "lpsolve"
+source("solving.R")
 
 #################################################################################################################
-### OPTIMIZATION
-model            <- list()
-model$A          <- A
-model$obj        <- Obj
-model$modelsense <- "min"
-model$rhs        <- as.vector(rhs)
-model$sense      <- as.vector(sense)
-
-### SOLVING
-library(gurobi)
-result <- gurobi(model)
-
-#################################################################################################################
-### RESULTS
-objval <- result$objval
-xval   <- result$x
+### RESULTS Illustrations
 source("plot_results.R")
 
