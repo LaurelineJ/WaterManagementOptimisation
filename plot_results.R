@@ -11,7 +11,7 @@ rLat  <- array(data=xval[(1:(G*Time*n_s)) + startG + G*Time*(M+n_s)],dim=c(G,Tim
 
 resstring<-c("res 1","res 2","res 3","res 4","res 5")
 
-plot(rQ[1,1,],lty=1,type="l",ylim=c(0,max(c(max(rQsup),max(rQ)))),col="white")
+plot(rQ[1,1,],lty=1,type="l",ylim=c(0,max(c(max(rQsup),max(rQ)))),col="white",xlab ="month", ylab ="withdrawals")
 for(m in 1:M){for(r in 1:R){
   lines(rQ[r,m,],lty=m,col=r,lwd=4)
 }}
@@ -21,7 +21,7 @@ for(m in 1:M){for(s in 1:n_s){
 legend("topright",legend=c(resstring,"super res"),col=c(1:5,"purple"),lty=1,lwd=2)
 
 
-plot(rS[1,,1],lty=1,type="l",ylim=c(0,max(rS)),col="white")
+plot(rS[1,,1],lty=1,type="l",ylim=c(0,max(rS)),col="white",xlab ="month", ylab ="reservoir storage")
 for(s in 1:n_s){for(r in 1:R){
   lines(rS[r,,s],lty=s,col=r,lwd=2)
 }}
