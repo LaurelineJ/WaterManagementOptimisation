@@ -6,8 +6,8 @@ The water demand of the municipality $i$ can be met from several sources:
 $$W_{it} = R_{it} + \\sum_{r \\in R_i}R_{irt} + GW_{it} + \\sum_{j \\in J_i}Q_{ijt} + Q_{ist}$$
 where
 - $R_{it}$ is a fraction of the local flow/run-off
-- $R_{irt}$ are from the streams linked to the municipality i
-- $Q_{ijt}$ denotes the import from reservoir $j$ to the municipality i
+- $R_{irt}$ are from the streams linked to the municipality $i$
+- $Q_{ijt}$ denotes the import from reservoir $j$ to the municipality $i$
 - $GW_{it}$ is the abstracted groundwater, and $Q_{ist}$ is the water imported from a super sink/source. This last term can be seen as a quantification of the failure to meet water demands with local resources, but also ensures a LP formulation of the optimisation problem.
 
 To each of these sources, a volumetric cost is associated and we obtain the cost of the total water:
@@ -34,7 +34,7 @@ The optimisation problem is constrained on many aspects:
 ### Simulation
 The system state variables are simulated as follows. Groundwater mass balance equation: $$h_{i,t+1}=h_{it} - \sum_{a\in A_i} s_{at}$$
 Reservoir mass balance equation:
-$$S_{j,t+1} = S_{jt} - \sum_{i\in I_j}Q_{ijt} + \sum_{r \in R_j}R_{rjt} - E_{it}$, with $0 \leq  S_{jt} \leq SC_{jt}$$
+$$S_{j,t+1} = S_{jt} - \sum_{i\in I_j}Q_{ijt} + \sum_{r \in R_j}R_{rjt} - E_{it}$$, with $0 \leq  S_{jt} \leq SC_{jt}$
 
 
 ### Remarks
